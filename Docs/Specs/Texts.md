@@ -1,4 +1,4 @@
-# Főoldal  x
+# Főoldal #
 25 éves a Fővárosi Protestáns Kántorátus
 
 Az alapításkor három együttes alkotta a Fővárosi Kántorátust: a Szent István Bazilikában szolgáló és a Budapesti Énekes Iskolához köthető katolikus, valamint a kelenföldi protestáns „ágazat”. Azóta több helyen alakultak rokon célokat ápoló együttesek: a reformátusok Budafokon 2004 óta, a Kálvin téren 2006 óta havonta énekelnek vesperát. A Gödöllői Premontrei Kántorátus 2009-től, a Belvárosi Kántorátus 2018-tól végez rendszeres szolgálatot. Ferencvárosban 2011-ben alakult evangélikus kántorátus, több vidéki városban (például Orosházán és Szombathelyen) pedig a nagyobb ünnepekhez kötve tartanak zsoltározó alkalmakat.
