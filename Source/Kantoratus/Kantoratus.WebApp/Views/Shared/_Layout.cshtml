@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fővárosi Kántorátus | @ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/css/slicknav.min.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <header class="header-section clearfix">
+        <a asp-action="index" asp-controller="home" class="site-logo">
+            <h1>Fővárosi Protestáns Kántorátus</h1>
+        </a>
+
+        <ul class="main-menu">
+            <li><a href="#">Hanganyag</a></li>
+            <li><a href="#">Önálló művek</a></li>
+            <li><a href="#">Feldolgozások szerzői</a></li>
+            <li><a href="#">Tagok</a></li>
+            <li><a href="#">Kiemelt események</a></li>
+            <li><a href="https://www.facebook.com/F%C5%91v%C3%A1rosi-Protest%C3%A1ns-K%C3%A1ntor%C3%A1tus-2489253114423466" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+            <li><a href="#"><i class="fas fa-search"></i></a></li>
+        </ul>
+    </header>
+
+    @RenderBody()
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-7 order-lg-1">
+                    <div class="row">
+                        <div class="footer-widget">
+                            <h2>Fővárosi Protestáns Kántorátus</h2>
+                            <ul>
+                                <li>
+                                    <a href="https://kelenfold.lutheran.hu/alkalmaink/istentiszteletek/ " target="_blank">
+                                        <i class="fas fa-church"></i>
+                                        Kelenföldi evangélikus templom
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://goo.gl/maps/jzJLsYypFnTfvR8A6" target="_blank">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                        Budapest XI. Bocskai út 10.
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <i class="fas fa-user"></i>
+                                        Pap Kinga Marjatta
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://goo.gl/maps/jzJLsYypFnTfvR8A6">
+                                        <script TYPE="text/javascript">
+                                            emailE = 'gmail.com';
+                                            emailE = ('kuninga' + '@@' + emailE);
+                                            document.write('<A href="mailto:' +
+                                                emailE +
+                                                '"><i class="fas fa-envelope"></i> ' +
+                                                emailE +
+                                                '</a>');
+                                        </script>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.facebook.com/F%C5%91v%C3%A1rosi-Protest%C3%A1ns-K%C3%A1ntor%C3%A1tus-2489253114423466" target="_blank">
+                                        <i class="fas fa-thumbs-up"></i>
+                                        Fővárosi Protestáns Kántorátus
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="index" asp-controller="home">
+                                        <i class="fas fa-globe"></i>
+                                        kantoratus.hu
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-lg-7 order-lg-1"></div>
+                <div class="col-xl-6 col-lg-7 order-lg-2 copyright">
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> <a href="https://www.linkedin.com/in/zolt%C3%A1n-f%C3%A9lix-b%C3%A1r%C3%A1ndi-772409116/">Bárándi Zoltán Félix</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/mixitup.min.js"></script>
+    <script src="~/js/jquery.slicknav.min.js"></script>
+    <script src="~/js/main.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
