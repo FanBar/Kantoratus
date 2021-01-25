@@ -16,7 +16,7 @@
 html,
 body {
     height: 100%;
-    font-family: FuturaPTBook, "Montserrat", sans-serif;
+    font-family: FuturaPTBook, sans-serif;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
 }
@@ -29,7 +29,7 @@ h5,
 h6 {
     margin: 0;
     line-height: 1;
-    font-family: FuturaPTBook, "Montserrat", sans-serif;
+    font-family: FuturaPTBook, sans-serif;
 }
 
 h1 {
@@ -232,7 +232,6 @@ Header section
     margin-left: 0;
     padding: 44px 15px 0 0;
     text-transform: uppercase;
-    ;
 }
 
     .site-logo:hover {
@@ -1098,13 +1097,13 @@ Artest Page
  -------------------*/
 
 .player-section {
-    padding: 57px 53px;
+    padding: 0 53px 57px 53px;
 }
 
 .player-box {
-    padding: 77px 121px 100px 81px;
+    padding: 33px 33px 30px 40px !important;
     border-radius: 24px;
-    background: #6a7080;
+    background: #AE1917;
 }
 
 .player-box {
@@ -1126,7 +1125,18 @@ Artest Page
 .tarck-thumb {
     max-width: 333px;
     position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
 }
+
+    .tarck-thumb iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 
     .tarck-thumb img {
         border-radius: 22px;
@@ -1162,10 +1172,13 @@ Artest Page
 .wave-player-info h2 {
     font-size: 48px;
     font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
 }
 
 .wave-player-info p {
     font-size: 14px;
+    color: #fff;
 }
 
 .wavePlayer_controls {
@@ -1508,7 +1521,6 @@ Responsive
 
     .slicknav_btn {
         position: relative;
-        top: -24px;
         background: #fff;
     }
 
@@ -1939,4 +1951,9 @@ a:hover {
 
 .slicknav_menu .slicknav_menutxt, .slicknav_nav a {
     color: #AE1917 !important;
+}
+
+.subintro {
+    padding-top: 50px !important;
+    padding-bottom: 0 !important;
 }

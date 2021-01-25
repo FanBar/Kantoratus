@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kantoratus.WebApp", "Kantoratus.WebApp\Kantoratus.WebApp.csproj", "{6C7D2C69-65C9-4DC1-976B-DD680600D32F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kantoratus.Persistence", "Kantoratus.Persistence\Kantoratus.Persistence.csproj", "{8786E13A-18F9-4E08-A7D5-48C3BF4BF677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kantoratus.Domain", "Kantoratus.Domain\Kantoratus.Domain.csproj", "{FD053C14-3205-4261-9346-96982C5A4316}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6C7D2C69-65C9-4DC1-976B-DD680600D32F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C7D2C69-65C9-4DC1-976B-DD680600D32F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C7D2C69-65C9-4DC1-976B-DD680600D32F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8786E13A-18F9-4E08-A7D5-48C3BF4BF677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8786E13A-18F9-4E08-A7D5-48C3BF4BF677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8786E13A-18F9-4E08-A7D5-48C3BF4BF677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8786E13A-18F9-4E08-A7D5-48C3BF4BF677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD053C14-3205-4261-9346-96982C5A4316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD053C14-3205-4261-9346-96982C5A4316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD053C14-3205-4261-9346-96982C5A4316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD053C14-3205-4261-9346-96982C5A4316}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
