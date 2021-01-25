@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Kantoratus.Domain.PlayListViewModel>
+
+<section class="intro-section spad subintro">
+    <div class="container">
+        <div class="row">
+            <div class="section-title">
+                <h2>A 25 év során elhangzott zenei anyag szerény lenyomataként két lejátszási listát ajánlunk figyelmükbe.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+@foreach (var playlist in Model)
+{
+    <section class="player-section set-bg" data-setbg="img/player-bg.jpg">
+        <div class="player-box">
+            <div class="tarck-thumb-warp">
+                <div class="tarck-thumb">
+                    <iframe width="560"
+                            height="349"
+                            src="https://www.youtube-nocookie.com/embed/videoseries?list=@playlist.YouTubeId"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="wave-player-warp">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="wave-player-info">
+                            <h2>@playlist.Name</h2>
+                            <p>@playlist.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
