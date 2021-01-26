@@ -1,6 +1,6 @@
 ﻿namespace Kantoratus.Domain
 {
-    public class PlayListViewModel
+    public class PlayList
     {
         public string Name { get; set; }
 

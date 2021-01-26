@@ -3,6 +3,7 @@ using System.Linq;
 using Kantoratus.Domain;
 using Kantoratus.Persistence;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Kantoratus.WebApp.Controllers
 {
@@ -14,7 +15,15 @@ namespace Kantoratus.WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View(Context.PlayLists.Select(p => new PlayListViewModel { Description = p.Description, YouTubeId = p.YouTubeId, Name = p.Name }).ToList());
+            return View(
+                Context.PlayLists
+                    .Select(p => new PlayList
+                    {
+                        Description = p.Description,
+                        YouTubeId = p.YouTubeId,
+                        Name = p.Name
+                    })
+                    .ToList());
         }
     }
 }
