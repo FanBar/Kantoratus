@@ -13,12 +13,18 @@
     src: url('../fonts/FuturaPTLight.otf');
 }
 
+@font-face {
+    font-family: Rhapsodie;
+    src: url('../fonts/rhapsodie_swash_caps_normal.ttf');
+}
+
 html,
 body {
     height: 100%;
     font-family: FuturaPTBook, sans-serif;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
+    font-size: 17px;
 }
 
 h1,
@@ -27,7 +33,6 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
     line-height: 1;
     font-family: FuturaPTBook, sans-serif;
 }
@@ -1203,7 +1208,7 @@ Artest Page
 
 .songs-details-section {
     padding: 100px 38px 50px;
-    background: #f9fcfd;
+    background: #fff;
 }
 
 .song-details-box {
@@ -1212,7 +1217,8 @@ Artest Page
 }
 
     .song-details-box h3 {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
+        font-family: Rhapsodie;
     }
 
     .song-details-box ul {
@@ -1221,16 +1227,19 @@ Artest Page
     }
 
         .song-details-box ul li {
-            margin-bottom: 15px;
-            font-size: 14px;
-            line-height: 2;
+            font-size: 17px;
+            padding-left: 30px;
+            padding-top: 15px;
         }
 
-        .song-details-box ul strong {
-            float: left;
+            .song-details-box ul li:last-of-type {
+                margin-bottom: 15px;
+            }
+
+        .song-details-box strong {
             margin-right: 6px;
+            margin-left: 15px;
             font-weight: 600;
-            color: #AE1917;
         }
 
         .song-details-box ul span {
@@ -1943,4 +1952,9 @@ a:hover {
 
 .slicknav_menu .slicknav_menutxt, .slicknav_nav a {
     color: #AE1917 !important;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }

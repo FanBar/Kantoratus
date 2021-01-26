@@ -10,5 +10,7 @@ namespace Kantoratus.Persistence
         }
 
         public DbSet<PlayList> PlayLists { get; set; }
+
+        public DbSet<Piece> Pieces { get; set; }
     }
 }

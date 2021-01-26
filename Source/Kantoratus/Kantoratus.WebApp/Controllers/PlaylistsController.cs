@@ -17,13 +17,13 @@ namespace Kantoratus.WebApp.Controllers
         {
             return View(
                 Context.PlayLists
-                    .Select(p => new PlayList
-                    {
-                        Description = p.Description,
-                        YouTubeId = p.YouTubeId,
-                        Name = p.Name
-                    })
-                    .ToList());
+                        .Select(p => new PlayList
+                        {
+                            Description = p.Description,
+                            YouTubeId = p.YouTubeId,
+                            Name = p.Name
+                        })
+                        .ToList());
         }
     }
 }

@@ -1,0 +1,39 @@
+﻿@using Kantoratus.WebApp.Controllers
+@model IEnumerable<Kantoratus.Domain.Initial>
+
+<section class="intro-section spad">
+    <div class="container">
+        <div class="row">
+            <p>
+                A kelenföldi vesperáknak kezdettől minden alkalommal szerves részét képezi egy igényes motetta – mely a kezdeti elképzelések szerint az egyházi év megfelelő időszakában változatlanul ismétlődött. Az igeolvasás után gyakran szerepeltek evangéliumi motetták, 2007 adventjétől alkalmanként, 2009 őszétől pedig rendszeresen a „bevonuló ének” helyén is elhangzik egy további önálló kórusmű. Az önállóan elhangzott művek jegyzéke nem csak a repertoárválasztás súlypontjaiba és egyre bővülő forrásaiba nyújt betekintést, de a szólam-összeállításból az együttes életének változatos időszakai is kirajzolódnak.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="songs-details-section">
+    <div class="card-columns">
+        @foreach (var initial in Model)
+        {
+            <div class="card border-0 mx-auto">
+                <div class="card-body">
+                    <div class="song-details-box">
+                        <h3>@initial.Letter</h3>
+                        @foreach (var composer in initial.Composers)
+                        {
+                            <strong>@composer.Name</strong>
+                            <ul>
+                                @foreach (var piece in composer.Pieces)
+                                {
+                                    <li>
+                                        @piece
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
