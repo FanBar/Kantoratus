@@ -35,9 +35,11 @@ namespace Kantoratus.WebApp.Controllers
                         .Select(c => new Composer
                         {
                             Name = c,
-                            Pieces = Context.Pieces.Where(p => p.Composer == c).Select(p => p.Title)
+                            Pieces = Context.Pieces.Where(p => p.Composer == c).Select(p => p.Title).OrderBy(p => p)
                         })
-                }));
+                        .OrderBy(c => c.Name)
+                })
+                .OrderBy(i => i.Letter));
         }
     }
 }

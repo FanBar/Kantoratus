@@ -39,7 +39,7 @@ h6 {
 
 h1 {
     margin: 0;
-    font-size: 36px !important;
+    font-size: 48px !important;
     line-height: 1;
     color: #ffffff;
 }
@@ -60,7 +60,7 @@ h4, h5, h6 {
 }
 
 p {
-    font-size: 17px;
+    font-size: 18px;
     color: #000;
     line-height: 1.8;
     font-weight: 500;
@@ -227,7 +227,7 @@ Header section
     font-size: 64px;
     color: #ffffff;
     margin-left: 0;
-    padding: 44px 15px 0 0;
+    padding: 44px 15px 44px 0;
     text-transform: uppercase;
 }
 
@@ -1172,7 +1172,7 @@ Artest Page
 }
 
 .wave-player-info p {
-    font-size: 17px;
+    font-size: 18px;
     color: #fff;
 }
 
@@ -1481,7 +1481,7 @@ Responsive
 
 /* Tablet :768px. */
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 1216px) {
     .header-section {
         padding-bottom: 55px;
     }
@@ -1690,7 +1690,7 @@ Responsive
 
     .slicknav_btn {
         position: relative;
-        top: -24px;
+        top: -120px;
         background: #fff;
     }
 
@@ -1944,7 +1944,7 @@ Responsive
         }
 }
 
-a:hover {
+a:hover, h1:hover {
     color: #FFA387;
 }
 
