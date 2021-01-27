@@ -102,8 +102,8 @@ ol {
 }
 
 .spad {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .text-white h1,
@@ -595,7 +595,7 @@ Responsive
 
 .footer-section {
     background: #AE1917;
-    padding: 100px 85px 85px;
+    padding: 17px;
 }
 
 .footer-widget {
@@ -625,7 +625,6 @@ Responsive
     text-transform: uppercase;
     font-weight: 500;
     color: #fff;
-    padding: 10px 0 25px;
     text-align: right;
 }
 
@@ -1110,7 +1109,6 @@ Artest Page
 }
 
 .wave-player-warp {
-    padding-top: 40px;
     position: relative;
     width: calc(100% - 382px);
 }
@@ -1207,7 +1205,7 @@ Artest Page
 }
 
 .songs-details-section {
-    padding: 100px 38px 50px;
+    padding: 0 38px 50px;
     background: #fff;
 }
 

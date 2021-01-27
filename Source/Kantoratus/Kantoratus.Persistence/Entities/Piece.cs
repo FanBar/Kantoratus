@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kantoratus.Persistence.Entities
 {
+    [Index(nameof(Composer), nameof(Title), IsUnique = true, Name = "UX_Pieces_ComposerTitle")]
     public class Piece : Entity
     {
         [Required]

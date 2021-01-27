@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using Kantoratus.Domain;
 using Kantoratus.Persistence;
 using Kantoratus.Persistence.Entities;
 using Kantoratus.WebApp.Helpers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Kantoratus.WebApp.Controllers
 {
@@ -24,7 +26,7 @@ namespace Kantoratus.WebApp.Controllers
                 .Distinct(new CompareStringIgnoringAccents())
                 .Select(i => new Initial
                 {
-                    Letter = i.Single(),
+                    Letter = Encoding.UTF8.GetString(Encoding.GetEncoding("ISO-8859-8").GetBytes(i)).Single(), // Remove diacritics
                     Composers = Context.Pieces
                         .ToList()
                         .Where(p => string.Compare(p.Composer.Substring(0, 1), i, CultureInfo.CurrentCulture, CompareOptions.IgnoreNonSpace) == 0)
