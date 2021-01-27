@@ -22,7 +22,7 @@ namespace Kantoratus.WebApp.Controllers
                     .Select(i => new Initial
                     {
                         Letter = GetFirstLetter(i),
-                        Composers = Context.Composers
+                        Categories = Context.Composers
                             .ToList()
                             .Where(c => string.Compare(
                                 c.Name.Substring(0, 1), 
@@ -30,7 +30,7 @@ namespace Kantoratus.WebApp.Controllers
                                 CultureInfo.CurrentCulture, 
                                 CompareOptions.IgnoreNonSpace) == 0)
                             .Select(c => c.Name)
-                            .Select(c => new Composer
+                            .Select(c => new Category
                             {
                                 Name = c
                             })

@@ -22,15 +22,15 @@ namespace Kantoratus.WebApp.Controllers
                 .Select(i => new Initial
                 {
                     Letter = GetFirstLetter(i),
-                    Composers = Context.Pieces
+                    Categories = Context.Pieces
                         .ToList()
                         .Where(p => string.Compare(p.Composer.Substring(0, 1), i, CultureInfo.CurrentCulture, CompareOptions.IgnoreNonSpace) == 0)
                         .Select(p => p.Composer)
                         .Distinct()
-                        .Select(c => new Composer
+                        .Select(c => new Category
                         {
                             Name = c,
-                            Pieces = Context.Pieces.Where(p => p.Composer == c).Select(p => p.Title).OrderBy(p => p)
+                            Items = Context.Pieces.Where(p => p.Composer == c).Select(p => p.Title).OrderBy(p => p)
                         })
                         .OrderBy(c => c.Name)
                 })

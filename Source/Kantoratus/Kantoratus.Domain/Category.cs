@@ -2,10 +2,10 @@
 
 namespace Kantoratus.Domain
 {
-    public class Composer
+    public class Category
     {
         public string Name { get; set; }
 
-        public IEnumerable<string> Pieces { get; set; }
+        public IEnumerable<string> Items { get; set; }
     }
 }

@@ -25,11 +25,11 @@
                 <div class="card-body">
                     <div class="song-details-box">
                         <h3>@initial.Letter</h3>
-                        @foreach (var composer in initial.Composers)
+                        @foreach (var composer in initial.Categories)
                         {
                             <strong>@composer.Name</strong>
                             <ul>
-                                @foreach (var piece in composer.Pieces)
+                                @foreach (var piece in composer.Items)
                                 {
                                     <li>
                                         @piece
