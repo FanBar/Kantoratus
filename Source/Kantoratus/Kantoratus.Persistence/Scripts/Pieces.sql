@@ -178,7 +178,7 @@ INSERT INTO Pieces (Composer, Title) VALUES ('Hassler, Hans Leo (1564–1612)', 
 INSERT INTO Pieces (Composer, Title) VALUES ('Hassler, Hans Leo (1564–1612)', 'Jer, örvendjünk, keresztyének SSA')
 INSERT INTO Pieces (Composer, Title) VALUES ('Hassler, Hans Leo (1564–1612)', 'Verbum caro factum est ATB')
 INSERT INTO Pieces (Composer, Title) VALUES ('Haydn, Johann Michael (1737–1806)', 'Judas mercator pessimus SATB')
-INSERT INTO Pieces (Composer, Title) VALUES ('Haydn, Johann Michael (1737-1806)', 'Tribulationes cordis mei SATB')
+INSERT INTO Pieces (Composer, Title) VALUES ('Haydn, Johann Michael (1737–1806)', 'Tribulationes cordis mei SATB')
 INSERT INTO Pieces (Composer, Title) VALUES ('Haydn, Joseph (1732–1809)', 'Az Úrra hagyjad utad SAB')
 INSERT INTO Pieces (Composer, Title) VALUES ('Haydn, Joseph (1732–1809)', 'Show me your ways – 25. zsoltár SAB')
 INSERT INTO Pieces (Composer, Title) VALUES ('Hayes, Philipp (1738–1797)', 'Hozsánna! SAB')
