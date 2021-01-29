@@ -793,20 +793,14 @@ Contact page
     padding: 100px 53px 104px 78px;
 }
 
-    .contact-warp p {
-        padding-top: 40px;
-        margin-bottom: 50px;
-    }
-
     .contact-warp ul {
         margin-bottom: 90px;
         list-style: none;
     }
 
         .contact-warp ul li {
-            font-size: 14px;
             color: #AE1917;
-            font-size: 14px;
+            font-size: 18px;
             margin-bottom: 15px;
             font-weight: 500;
         }
