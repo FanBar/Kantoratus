@@ -16,5 +16,7 @@ namespace Kantoratus.Persistence
         public DbSet<Composer> Composers { get; set; }
         
         public DbSet<Member> Members { get; set; }
+        
+        public DbSet<Event> Events { get; set; }
     }
 }

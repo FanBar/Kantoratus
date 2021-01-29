@@ -1,0 +1,13 @@
+﻿@model Kantoratus.Domain.EventList
+
+<div class="site-pagination">
+    @foreach (var year in Model.Years.Where(y => y < Model.ActiveYear))
+    {
+        <a asp-action="Index" asp-controller="Events" asp-route-year="@year">@year</a>
+    }
+    <a href="#" class="active">@Model.ActiveYear</a>
+    @foreach (var year in Model.Years.Where(y => y > Model.ActiveYear))
+    {
+        <a asp-action="Index" asp-controller="Events" asp-route-year="@year">@year</a>
+    }
+</div>
