@@ -25,46 +25,60 @@
         <partial name="PaginationPartial" />
 
         @for (var i = 0; i < Model.Events.Count(); ++i)
+        {
+            @if (Model.Events[i].IsArticle)
             {
-        @if (Model.Events[i].IsArticle)
-                {
-        <div class="player-box">
-            @*<div class="wave-player-warp">*@
-            <div class="wave-player-info">
-                <div class="blog-date">@Model.Events[i].Date</div>
-                <div class="blog-meta">@Model.Events[i].Location</div>
-                <h2 class="black">@Model.Events[i].Title</h2>
-                <div class="black">@Html.Raw(Model.Events[i].Description)</div>
-            </div>
-            @*</div>*@
-        </div>
-                }
-                else
-                {
-        <div class="blog-item">
-            <div class="blog-date">@Model.Events[i].Date</div>
-            <div class="blog-meta">@Model.Events[i].Location</div>
-            <h3>@Model.Events[i].Title</h3>
-            <div class="w3-content w3-display-container">
-                @foreach (var image in Model.Events[i].Images)
+                <div class="player-box">
+                    <div class="wave-player-info">
+                        <div class="blog-date">@Model.Events[i].Date</div>
+                        <div class="blog-meta">@Model.Events[i].Location</div>
+                        <h2 class="black">@Model.Events[i].Title</h2>
+                        <div class="w3-content w3-display-container">
+                            @foreach (var image in Model.Events[i].Images)
                             {
-                <a href="@image"><img class="slideImage @i" src="@image"></a>
+                                <a href="@image"><img class="slideImage @i" src="@image"></a>
                             }
 
-                @if (Model.Events[i].Images.Count() > 1)
+                            @if (Model.Events[i].Images.Count() > 1)
                             {
-                <button class="w3-button w3-display-left" onclick="plusDivs(-1, @i)">&#10094;</button>
-                <button class="w3-button w3-display-right" onclick="plusDivs(+1, @i)">&#10095;</button>
+                                <button class="w3-button w3-display-left" onclick="plusDivs(-1, @i)">&#10094;</button>
+                                <button class="w3-button w3-display-right" onclick="plusDivs(+1, @i)">&#10095;</button>
                             }
 
-                <script>
+                            <script>
                                 addSlideShow(@i);
-                </script>
-            </div>
-            @Html.Raw(Model.Events[i].Description)
-        </div>
-                }
+                            </script>
+                        </div>
+                        <div class="black">@Html.Raw(Model.Events[i].Description)</div>
+                    </div>
+                </div>
             }
+            else
+            {
+                <div class="blog-item">
+                    <div class="blog-date">@Model.Events[i].Date</div>
+                    <div class="blog-meta">@Model.Events[i].Location</div>
+                    <h3>@Model.Events[i].Title</h3>
+                    <div class="w3-content w3-display-container">
+                        @foreach (var image in Model.Events[i].Images)
+                        {
+                            <a href="@image"><img class="slideImage @i" src="@image"></a>
+                        }
+
+                        @if (Model.Events[i].Images.Count() > 1)
+                        {
+                            <button class="w3-button w3-display-left" onclick="plusDivs(-1, @i)">&#10094;</button>
+                            <button class="w3-button w3-display-right" onclick="plusDivs(+1, @i)">&#10095;</button>
+                        }
+
+                        <script>
+                                addSlideShow(@i);
+                        </script>
+                    </div>
+                    @Html.Raw(Model.Events[i].Description)
+                </div>
+            }
+        }
 
         <partial name="PaginationPartial" />
 
