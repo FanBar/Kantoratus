@@ -36,7 +36,7 @@ namespace Kantoratus.WebApp.Controllers
                     .ToList()
                     .Select(e => new Event
                     {
-                        Images = Directory.GetFiles($@".\wwwroot\img\Content\{e.ImageFolder}").Select(f => @$"img\Content\{e.ImageFolder}\{Path.GetFileName(f)}"),
+                        Images = GetImages(e.ImageFolder),
                         Date = e.Date,
                         Title = e.Title,
                         Location = e.Location,
@@ -45,6 +45,20 @@ namespace Kantoratus.WebApp.Controllers
                     })
                     .ToList()
             });
+        }
+
+        private static IEnumerable<string> GetImages(string imageFolder)
+        {
+            try
+            {
+                return Directory
+                    .GetFiles($@".\wwwroot\img\Content\{imageFolder}")
+                    .Select(f => @$"img\Content\{imageFolder}\{Path.GetFileName(f)}");
+            }
+            catch (System.Exception)
+            {
+                return new List<string>();
+            }
         }
     }
 }
