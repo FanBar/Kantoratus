@@ -1,0 +1,63 @@
+﻿@model Kantoratus.Domain.SearchResults
+
+<form method="get" class="contact-from">
+    <div class="row">
+        <div class="col-md-6">
+            <input asp-for="Query" placeholder="Keresés a tartalmak között">
+        </div>
+        <div class="col-md-6">
+            <button class="site-btn">Keresés</button>
+        </div>
+    </div>
+</form>
+
+@if (@Model.NoResult)
+{
+    <div class="search-header">
+        <h2>Nincs találat.</h2>
+    </div>
+}
+
+@if (Model?.PlayLists?.Count() > 0)
+{
+    <div class="search-header">
+        <h2>Hangzóanyag</h2>
+    </div>
+    <partial name="~/Views/PlayLists/PlayListsPartial.cshtml" model="@Model?.PlayLists" />
+}
+
+@if (Model?.Pieces?.Count() > 0)
+{
+    <div class="search-header">
+        <h2>Önálló művek</h2>
+    </div>
+    <partial name="~/Views/Pieces/PiecesPartial.cshtml" model="@Model?.Pieces" />
+}
+
+@if (Model?.Composers?.Count() > 0)
+{
+    <div class="search-header">
+        <h2>Korál- és genfizsoltár-feldolgozások szerzői</h2>
+    </div>
+    <partial name="~/Views/Composers/ComposersPartial.cshtml" model="@Model?.Composers" />
+}
+
+@if (Model?.Members?.Count() > 0)
+{
+    <div class="search-header">
+        <h2>Tagok</h2>
+    </div>
+    <partial name="~/Views/Members/MembersPartial.cshtml" model="@Model?.Members" />
+}
+
+@if (Model?.Events?.Count() > 0)
+{
+    <div class="search-header">
+        <h2>Kiemelt események</h2>
+    </div>
+    <section class="blog-section spad">
+        <div class="container">
+            <partial name="~/Views/Events/EventsPartial.cshtml" model="@Model?.Events" />
+        </div>
+    </section>
+}

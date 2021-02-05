@@ -17,23 +17,4 @@
     </div>
 </section>
 
-<section class="songs-details-section">
-    <div class="card-columns">
-        @foreach (var initial in Model)
-        {
-            <div class="card border-0 mx-auto">
-                <div class="card-body">
-                    <div class="song-details-box">
-                        <h3>@initial.Letter</h3>
-                        <ul>
-                            @foreach (var composer in initial.Categories)
-                            {
-                                <li><strong>@composer.Name</strong></li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</section>
+<partial name="ComposersPartial" />

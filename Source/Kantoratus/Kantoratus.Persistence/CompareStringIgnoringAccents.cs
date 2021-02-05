@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 
-namespace Kantoratus.WebApp.Helpers
+namespace Kantoratus.Persistence
 {
     public class CompareStringIgnoringAccents : IEqualityComparer<string>
     {

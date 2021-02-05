@@ -769,18 +769,18 @@ Blog page
     padding-bottom: 72px;
 }
 
-.site-pagination a {
-    color: #000;
-    font-size: 18px;
-    display: inline-block;
-    margin-right: 5px;
-    font-weight: 500;
-}
-
-    .site-pagination a:hover,
-    .site-pagination a.active {
-        color: #AE1917;
+    .site-pagination a {
+        color: #000;
+        font-size: 18px;
+        display: inline-block;
+        margin-right: 5px;
+        font-weight: 500;
     }
+
+        .site-pagination a:hover,
+        .site-pagination a.active {
+            color: #AE1917;
+        }
 
 /* ----------------
 Contact page
@@ -1989,3 +1989,7 @@ a:hover, h1:hover {
 .search-header {
     margin: 30px;
 }
+
+    .search-header:first-of-type {
+        padding-top: 50px;
+    }

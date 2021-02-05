@@ -1,0 +1,60 @@
+﻿@model List<Kantoratus.Domain.Event>
+
+<script src="~/js/events.js" asp-append-version="true"></script>
+
+
+@for (var i = 0; i < Model.Count; ++i)
+{
+    @if (Model[i].IsArticle)
+    {
+        <div class="player-box blog-item">
+            <div class="wave-player-info">
+                <div class="blog-date">@Model[i].Date</div>
+                <div class="blog-meta">@Model[i].Location</div>
+                <h2 class="black">@Model[i].Title</h2>
+                <div class="w3-content w3-display-container">
+                    @foreach (var image in Model[i].Images)
+                    {
+                        <a href="@image"><img class="slideImage @i" src="@image"></a>
+                    }
+
+                    @if (Model[i].Images.Count() > 1)
+                    {
+                        <button class="w3-button w3-display-left" onclick="plusDivs(-1, @i)">&#10094;</button>
+                        <button class="w3-button w3-display-right" onclick="plusDivs(+1, @i)">&#10095;</button>
+                    }
+
+                    <script>
+                                addSlideShow(@i);
+                    </script>
+                </div>
+                <div class="black">@Html.Raw(Model[i].Description)</div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="blog-item">
+            <div class="blog-date">@Model[i].Date</div>
+            <div class="blog-meta">@Model[i].Location</div>
+            <h3>@Model[i].Title</h3>
+            <div class="w3-content w3-display-container">
+                @foreach (var image in Model[i].Images)
+                {
+                    <a href="@image"><img class="slideImage @i" src="@image"></a>
+                }
+
+                @if (Model[i].Images.Count() > 1)
+                {
+                    <button class="w3-button w3-display-left" onclick="plusDivs(-1, @i)">&#10094;</button>
+                    <button class="w3-button w3-display-right" onclick="plusDivs(+1, @i)">&#10095;</button>
+                }
+
+                <script>
+                                addSlideShow(@i);
+                </script>
+            </div>
+            @Html.Raw(Model[i].Description)
+        </div>
+    }
+}

@@ -1,8 +1,4 @@
-﻿using System.Globalization;
-using System.Linq;
-using Kantoratus.Domain;
-using Kantoratus.Persistence;
-using Kantoratus.WebApp.Helpers;
+﻿using Kantoratus.Persistence;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kantoratus.WebApp.Controllers
@@ -15,26 +11,7 @@ namespace Kantoratus.WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View(Context.Pieces
-                .Select(p => p.Composer.Substring(0, 1))
-                .ToList()
-                .Distinct(new CompareStringIgnoringAccents())
-                .Select(i => new Initial
-                {
-                    Letter = GetFirstLetter(i),
-                    Categories = Context.Pieces
-                        .ToList()
-                        .Where(p => string.Compare(p.Composer.Substring(0, 1), i, CultureInfo.CurrentCulture, CompareOptions.IgnoreNonSpace) == 0)
-                        .Select(p => p.Composer)
-                        .Distinct()
-                        .Select(c => new Category
-                        {
-                            Name = c,
-                            Items = Context.Pieces.Where(p => p.Composer == c).Select(p => p.Title).OrderBy(p => p)
-                        })
-                        .OrderBy(c => c.Name)
-                })
-                .OrderBy(i => i.Letter));
+            return View(Persistence.GetPieces(null));
         }
     }
 }
