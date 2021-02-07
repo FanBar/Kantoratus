@@ -24,7 +24,7 @@ namespace Kantoratus.Persistence
             var playlists = _context.PlayLists
                 .Select(p => new PlayList
                 {
-                    Description = p.Description,
+                    Description = ReplaceTags(p.Description),
                     YouTubeId = p.YouTubeId,
                     Name = p.Name
                 });
@@ -155,11 +155,14 @@ namespace Kantoratus.Persistence
                     Date = e.Date,
                     Title = e.Title,
                     Location = e.Location,
-                    Description = e.Description?.Replace("¶", "<p>").Replace("§", "</p>"),
+                    Description = ReplaceTags(e.Description),
                     IsArticle = e.IsArticle
                 })
                 .ToList();
         }
+
+        private static string ReplaceTags(string text) =>
+            text?.Replace("¶", "<p>").Replace("§", "</p>");
 
         private static char GetFirstLetter(string word)
         {
