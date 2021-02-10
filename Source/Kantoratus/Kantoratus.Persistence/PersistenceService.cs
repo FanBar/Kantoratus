@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Kantoratus.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -161,8 +162,21 @@ namespace Kantoratus.Persistence
                 .ToList();
         }
 
-        private static string ReplaceTags(string text) =>
-            text?.Replace("¶", "<p>").Replace("§", "</p>");
+        private static string ReplaceTags(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return null;
+            }
+
+            text = text
+                .Replace("§", "</p>").Replace("¶", "<p>")
+                .Replace("/####", "</h4>").Replace("####", "<h4>")
+                .Replace("/**", "</b>").Replace("**", "<b>")
+                .Replace("/*", "</i>").Replace("*", "<i>");
+
+            return Regex.Replace(text, @"\[([^]]*)\]\(([^\s^\)]*)[\s\)]", @"<a href='$2' target='_blank'>$1</a>");
+        }
 
         private static char GetFirstLetter(string word)
         {
