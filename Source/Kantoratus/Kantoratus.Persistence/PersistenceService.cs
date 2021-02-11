@@ -149,7 +149,8 @@ namespace Kantoratus.Persistence
                     || c.Location.Contains(query));
 
             return events
-                .OrderBy(e => e.Order)
+                .OrderBy(e => e.Year)
+                .ThenBy(e => e.Order)
                 .ToList()
                 .Select(e => new Event
                 {
