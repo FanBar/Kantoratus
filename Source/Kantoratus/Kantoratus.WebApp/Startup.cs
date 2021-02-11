@@ -24,7 +24,7 @@ namespace Kantoratus.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddDbContext<Context>(o =>
                 o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
@@ -40,6 +40,7 @@ namespace Kantoratus.WebApp
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseStaticFiles();
 
             app.UseRouting();
