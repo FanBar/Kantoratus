@@ -8,6 +8,7 @@
 * C#
 * .NET Core MVC
 * Entity Framework Core
+* Microsoft SQL Server
 * CSS3, Javascript, HTML5
 * Bootstrap
 * Razor
