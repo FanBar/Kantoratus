@@ -1,8 +1,8 @@
 # Website of the Fővárosi Protestáns Kántorátus (Capital Protestant Cantorate, Budapest)
 
 ## Available at
-* http://www.demo.kantoratus.hu/
-* http://www.kantoratus.hu/
+* UAT: http://www.demo.kantoratus.hu/
+* PROD: http://www.kantoratus.hu/
 
 ## Technologies
 * C#
