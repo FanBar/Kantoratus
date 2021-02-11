@@ -23,6 +23,7 @@ namespace Kantoratus.Persistence
         public List<PlayList> GetPlayLists(string query)
         {
             var playlists = _context.PlayLists
+                .ToList()
                 .Select(p => new PlayList
                 {
                     Description = ReplaceTags(p.Description),
