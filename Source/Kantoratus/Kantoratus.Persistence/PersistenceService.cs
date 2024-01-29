@@ -55,7 +55,7 @@ namespace Kantoratus.Persistence
                     Categories = pieces
                         .ToList()
                         .Where(p => string.Compare(
-                            p.Composer.Substring(0, 1),
+                            p.Composer.Substring(0, 1).ToUpper(),
                             i,
                             CultureInfo.CurrentCulture,
                             CompareOptions.IgnoreNonSpace) == 0)
@@ -182,7 +182,7 @@ namespace Kantoratus.Persistence
 
         private static char GetFirstLetter(string word)
         {
-            return Encoding.UTF8.GetString(Encoding.GetEncoding("ISO-8859-8").GetBytes(word)).Single();
+            return char.ToUpper(Encoding.UTF8.GetString(Encoding.GetEncoding("ISO-8859-8").GetBytes(word)).Single());
         }
 
         private static IEnumerable<string> GetImages(string imageFolder)
@@ -202,6 +202,18 @@ namespace Kantoratus.Persistence
         public IEnumerable<int> GetYears()
         {
             return _context.Events.Select(e => e.Year).Distinct().OrderBy(e => e);
+        }
+
+        public Facts GetFacts()
+        {
+            var dbEntity = _context.Facts.Single();
+            return new Facts
+            {
+                MemberCount = dbEntity.MemberCount,
+                PieceCount = dbEntity.PieceCount,
+                VespersCount = dbEntity.VespersCount,
+                Age = DateTime.Now.Year - 1996
+            };
         }
 
         public void Dispose()

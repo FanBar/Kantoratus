@@ -18,5 +18,7 @@ namespace Kantoratus.Persistence
         public DbSet<Member> Members { get; set; }
         
         public DbSet<Event> Events { get; set; }
+
+        public DbSet<Facts> Facts { get; set; } 
     }
 }
