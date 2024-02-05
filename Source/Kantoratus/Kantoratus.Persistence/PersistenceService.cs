@@ -123,12 +123,11 @@ namespace Kantoratus.Persistence
                             i,
                             CultureInfo.CurrentCulture,
                             CompareOptions.IgnoreNonSpace) == 0)
-                        .Select(m => m.Name)
+                        .OrderBy(m => m.Name)
                         .Select(m => new Category
                         {
-                            Name = m
+                            Name = $"{(m.IsDead ? "✝ " : string.Empty)}{m.Name}"
                         })
-                        .OrderBy(c => c.Name)
                 })
                 .OrderBy(i => i.Letter)
                 .ToList();

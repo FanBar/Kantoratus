@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Kantoratus.Persistence.Entities
 {
@@ -6,5 +7,8 @@ namespace Kantoratus.Persistence.Entities
     {
         [Required]
         public string Name { get; set; }
+
+        [Required, DefaultValue(false)] 
+        public bool IsDead { get; set; }
     }
 }
