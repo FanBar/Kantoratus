@@ -14,9 +14,29 @@ namespace Kantoratus.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("KFOLD_website")
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
+
+            modelBuilder.Entity("Kantoratus.Persistence.Entities.Chapter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "Name" }, "UX_Chapter_Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
+
+                    b.ToTable("Chapters");
+                });
 
             modelBuilder.Entity("Kantoratus.Persistence.Entities.Composer", b =>
                 {
@@ -161,6 +181,103 @@ namespace Kantoratus.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PlayLists");
+                });
+
+            modelBuilder.Entity("Kantoratus.Persistence.Entities.SheetMusic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("HimnologicalData1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HimnologicalData2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Lyrics")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("Origin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OriginalTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SubChapterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubChapterId");
+
+                    b.HasIndex(new[] { "Number" }, "UX_SheetMusic_Number")
+                        .IsUnique();
+
+                    b.ToTable("SheetMusics");
+                });
+
+            modelBuilder.Entity("Kantoratus.Persistence.Entities.SubChapter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("ChapterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "ChapterId", "Name" }, "UX_SubChapter_ChapterId_Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
+
+                    b.ToTable("SubChapters");
+                });
+
+            modelBuilder.Entity("Kantoratus.Persistence.Entities.SheetMusic", b =>
+                {
+                    b.HasOne("Kantoratus.Persistence.Entities.SubChapter", "SubChapter")
+                        .WithMany("SheetMusics")
+                        .HasForeignKey("SubChapterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SubChapter");
+                });
+
+            modelBuilder.Entity("Kantoratus.Persistence.Entities.SubChapter", b =>
+                {
+                    b.HasOne("Kantoratus.Persistence.Entities.Chapter", "Chapter")
+                        .WithMany("SubChapters")
+                        .HasForeignKey("ChapterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Chapter");
+                });
+
+            modelBuilder.Entity("Kantoratus.Persistence.Entities.Chapter", b =>
+                {
+                    b.Navigation("SubChapters");
+                });
+
+            modelBuilder.Entity("Kantoratus.Persistence.Entities.SubChapter", b =>
+                {
+                    b.Navigation("SheetMusics");
                 });
 #pragma warning restore 612, 618
         }

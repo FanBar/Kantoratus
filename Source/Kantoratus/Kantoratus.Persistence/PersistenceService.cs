@@ -153,7 +153,7 @@ namespace Kantoratus.Persistence
                 .ToList()
                 .Select(e => new Event
                 {
-                    Images = GetImages(e.ImageFolder),
+                    Images = GetImages($@"Events\{e.ImageFolder}"),
                     Date = e.Date,
                     Title = e.Title,
                     Location = e.Location,
@@ -174,7 +174,8 @@ namespace Kantoratus.Persistence
                 .Replace("§", "</p>").Replace("¶", "<p>")
                 .Replace("/####", "</h4>").Replace("####", "<h4>")
                 .Replace("/**", "</b>").Replace("**", "<b>")
-                .Replace("/*", "</i>").Replace("*", "<i>");
+                .Replace("/*", "</i>").Replace("*", "<i>")
+                .Replace(@"\", "</br>");
 
             return Regex.Replace(text, @"\[([^]]*)\]\(([^\s^\)]*)[\s\)]", @"<a href='$2' target='_blank'>$1</a>");
         }
@@ -190,7 +191,7 @@ namespace Kantoratus.Persistence
             {
                 return Directory
                     .GetFiles($@".\wwwroot\img\Content\{imageFolder}")
-                    .Select(f => @$"img\Content\{imageFolder}\{Path.GetFileName(f)}");
+                    .Select(f => @$"\img\Content\{imageFolder}\{Path.GetFileName(f)}");
             }
             catch (System.Exception)
             {
@@ -213,6 +214,81 @@ namespace Kantoratus.Persistence
                 VespersCount = dbEntity.VespersCount,
                 Age = DateTime.Now.Year - 1996
             };
+        }
+
+        public SheetMusic GetSheetMusic(string number)
+        {
+            // Order by numeric part, then suffix
+            var sheetMusics = _context.SheetMusics
+                .Include(s => s.SubChapter.Chapter)
+                .ToList()
+                .Select(s => (Entity: s, Key: ParseSheetMusicNumber(s.Number)))
+                .OrderBy(x => x.Key.NumberPart).ThenBy(x => x.Key.Suffix)
+                .Select(x => x.Entity)
+                .ToList();
+
+            var entity = sheetMusics.SingleOrDefault(s => s.Number == number);
+
+            if (entity == null)
+            {
+                return null;
+            }
+
+            var index = sheetMusics.IndexOf(entity);
+
+            return new SheetMusic
+            {
+                Number = entity.Number,
+                Title = entity.Title ?? entity.OriginalTitle,
+                Chapter = entity.SubChapter.Chapter.Name,
+                SubChapter = entity.SubChapter.Name,
+                Images = GetImages($@"SheetMusic\{entity.Number}"),
+                Lyrics = ReplaceTags(entity.Lyrics),
+                Origin = entity.Origin,
+                HimnologicalData1 = entity.HimnologicalData1,
+                HimnologicalData2 = entity.HimnologicalData2,
+                Previous = index > 0 ? sheetMusics[index - 1].Number : null,
+                Next = index < sheetMusics.Count - 1 ? sheetMusics[index + 1].Number : null
+            };
+        }
+
+        public IEnumerable<Chapter> GetChapters()
+        {
+            return _context.Chapters.Select(c => new Chapter
+            {
+
+                Name = c.Name,
+                SubChapters = c.SubChapters.Select(sc => new SubChapter
+                {
+                    Name = sc.Name,
+                    SheetMusics = sc.SheetMusics.Select(sm => new SheetMusic
+                    {
+                        Number = sm.Number,
+                        Title = sm.Title ?? sm.OriginalTitle,
+                        OriginalTitle = sm.OriginalTitle == null || sm.OriginalTitle == ""
+                            ? sm.Title
+                            : sm.Title == null ? sm.OriginalTitle : sm.OriginalTitle + " / " + sm.Title
+                    })
+                })
+            });
+        }
+
+        private static (int NumberPart, string Suffix) ParseSheetMusicNumber(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return (0, string.Empty);
+
+            int i = 0;
+            // Parse leading digits
+            while (i < value.Length && char.IsDigit(value[i]))
+            {
+                i++;
+            }
+
+            int numberPart = i > 0 ? int.Parse(value[..i]) : 0;
+            string suffix = i < value.Length ? value[i..] : string.Empty;
+
+            return (numberPart, suffix);
         }
 
         public void Dispose()

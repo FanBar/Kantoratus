@@ -53,12 +53,12 @@ h2 {
 h3 {
     font-size: 24px !important;
     color: #AE1917;
+    margin-top: 21px;
 }
 
 h4, h5, h6 {
     font-size: 18px !important;
     color: #AE1917;
-    margin-top: 70px;
     font-weight: 600;
 }
 
@@ -89,7 +89,8 @@ a:focus {
 ul,
 ol {
     padding: 0;
-    margin: 0;
+    margin: 0 0 34px 0;
+    list-style: none;
 }
 
 .section-title h2 {
@@ -120,6 +121,10 @@ ol {
 .text-white li,
 .text-white a {
     color: #ffffff;
+}
+
+.text-red {
+    color: #AE1917;
 }
 
 /*---------------------
@@ -630,10 +635,16 @@ Premium section
         }
 
 .copyright {
-    font-size: 11px;
     text-transform: uppercase;
-    font-weight: 500;
     color: #fff;
+}
+
+.small-text {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.text-align-right {
     text-align: right;
 }
 
@@ -1228,6 +1239,10 @@ Artest Page
     background: #fff;
 }
 
+    .songs-details-section a:hover {
+        color: #AE1917;
+    }
+
 .song-details-box {
     margin-bottom: 30px;
     overflow: hidden;
@@ -1240,7 +1255,7 @@ Artest Page
 
     .song-details-box ul {
         list-style: none;
-        max-width: 310px;
+        /*max-width: 310px;*/
     }
 
         .song-details-box ul li {
@@ -1980,7 +1995,7 @@ a:hover, h1:hover {
     max-height: 445px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 36px;
+    /*margin-top: 36px;*/
     margin-bottom: 36px;
 }
 
@@ -1999,3 +2014,132 @@ a:hover, h1:hover {
     .search-header:first-of-type {
         padding-top: 50px;
     }
+
+.lyrics-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 50px;
+    align-items: start;
+}
+
+    .lyrics-container p {
+        margin-top: 0;
+        margin-bottom: 35px;
+        break-inside: avoid;
+    }
+
+.original-titles-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.original-title-row {
+    margin: 0;
+    padding: 0;
+}
+
+    .original-title-row a {
+        display: grid;
+        grid-template-columns: 600px max-content;
+        column-gap: 12px;
+        justify-content: start;
+    }
+
+        .original-title-row a:hover {
+            color: #AE1917;
+            text-decoration: none;
+        }
+
+.original-title {
+    min-width: 0;
+}
+
+.original-title-number {
+    white-space: nowrap;
+    text-align: left;
+}
+
+.sheet-music-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+.sheet-music-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+.sheet-music-item {
+    margin: 0;
+    padding: 0;
+}
+
+    .sheet-music-item a {
+        display: grid;
+        grid-template-columns: 25px max-content;
+        column-gap: 10px;
+        align-items: baseline;
+        color: #000;
+        text-decoration: none;
+        line-height: 1.35;
+    }
+
+.sheet-music-number {
+    text-align: left;
+    white-space: nowrap;
+}
+
+.sheet-music-title {
+    white-space: nowrap;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .songs-details-section {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        /* Fontos: nem lehet 0 a bal oldali padding */
+        padding: 25px 15px 35px 20px !important;
+    }
+
+    .sheet-music-list,
+    .original-titles-list {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+    }
+
+    /* Első lista: szám elöl */
+    .sheet-music-item a {
+        grid-template-columns: 45px minmax(0, 1fr);
+        column-gap: 6px;
+        font-size: 14px;
+    }
+
+    .sheet-music-title {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    /* Második lista: cím elöl, szám utána */
+    .original-title-row a {
+        grid-template-columns: minmax(0, 1fr) max-content;
+        column-gap: 8px;
+        font-size: 14px;
+    }
+
+    .original-title {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .original-title-number {
+        white-space: nowrap;
+    }
+}

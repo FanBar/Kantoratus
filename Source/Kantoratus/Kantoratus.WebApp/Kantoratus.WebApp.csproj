@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\fonts\" />
+    <Folder Include="wwwroot\img\Content\SheetMusic\1\" />
+    <Folder Include="wwwroot\img\Content\SheetMusic\24\" />
   </ItemGroup>
 
   <ItemGroup>

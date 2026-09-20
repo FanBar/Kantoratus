@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Kantoratus.Domain.Chapter>
+
+<section class="songs-details-section sheet-music-section">
+    @foreach (var chapter in Model)
+    {
+        <h3>@chapter.Name</h3>
+        @foreach (var subChapter in chapter.SubChapters)
+        {
+            <h4>@subChapter.Name</h4>
+            <ul class="sheet-music-list">
+                @foreach (var sheetMusic in subChapter.SheetMusics)
+                {
+                    <li class="sheet-music-item">
+                        <a asp-action="Details" asp-controller="SheetMusic" asp-route-number="@sheetMusic.Number">
+                            <strong class="text-red sheet-music-number">@sheetMusic.Number</strong>
+                            <span class="sheet-music-title">@sheetMusic.Title                    </span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+    }
+</section>
+
+<section class="songs-details-section original-titles-section">
+    <h3>Eredeti nyelvű címek jegyzéke</h3>
+    <ul class="original-titles-list">
+        @foreach (var sheetMusic in Model.SelectMany(c => c.SubChapters).SelectMany(sc => sc.SheetMusics).OrderBy(sm => sm.OriginalTitle))
+        {
+            <li class="original-title-row">
+                <a asp-action="Details" asp-controller="SheetMusic" asp-route-number="@sheetMusic.Number">
+                    <span class="original-title">@sheetMusic.OriginalTitle</span>
+                    <strong class="text-red original-title-number">@sheetMusic.Number</strong>
+                </a>
+            </li>
+        }
+    </ul>
+</section>

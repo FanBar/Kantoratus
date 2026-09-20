@@ -1,0 +1,1 @@
+insert into [KFOLD_website].Chapters (Name) values ('VERSES ÉNEKEK'), ('CIKLIKUS TÉTELEK')
