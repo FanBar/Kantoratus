@@ -267,7 +267,8 @@ namespace Kantoratus.Persistence
                         Title = sm.Title ?? sm.OriginalTitle,
                         OriginalTitle = sm.OriginalTitle == null || sm.OriginalTitle == ""
                             ? sm.Title
-                            : sm.Title == null ? sm.OriginalTitle : sm.OriginalTitle + " / " + sm.Title
+                            : sm.Title == null ? sm.OriginalTitle : sm.OriginalTitle + " / " + sm.Title,
+                        IsHighlightedInIndex = sm.IsHighlightedInIndex
                     })
                 })
             });

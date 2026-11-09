@@ -16,5 +16,6 @@ namespace Kantoratus.Domain
         public string Previous { get; set; }
         public string Next { get; set; }
         public string OriginalTitle { get; set; }
+        public bool IsHighlightedInIndex { get; set; }
     }
 }

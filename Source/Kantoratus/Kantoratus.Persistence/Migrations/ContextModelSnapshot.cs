@@ -196,6 +196,11 @@ namespace Kantoratus.Persistence.Migrations
                     b.Property<string>("HimnologicalData2")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsHighlightedInIndex")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
                     b.Property<string>("Lyrics")
                         .HasColumnType("nvarchar(max)");
 

@@ -30,6 +30,9 @@ namespace Kantoratus.Persistence
         override protected void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("KFOLD_website");
+
+            modelBuilder.Entity<SheetMusic>().Property(sm => sm.IsHighlightedInIndex).HasDefaultValue(false);
+
             base.OnModelCreating(modelBuilder);
         }
     }

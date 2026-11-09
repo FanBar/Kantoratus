@@ -1,5 +1,22 @@
 ﻿@model IEnumerable<Kantoratus.Domain.Chapter>
 
+<section class="intro-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2>Doktori</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <p>
+                    A kántorátus vezetője, Pap Kinga Marjatta 2026 őszén védi meg hittudományi doktori dolgozatát az Evangélikus ittudományi Egyetemen. A dolgozat alkalmazott eredményei közé tartozik az a 30 tétel, amelynek énekelhető magyar nyelvű változatát itt bocsátjuk közre.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="songs-details-section sheet-music-section">
     @foreach (var chapter in Model)
     {
@@ -13,7 +30,9 @@
                     <li class="sheet-music-item">
                         <a asp-action="Details" asp-controller="SheetMusic" asp-route-number="@sheetMusic.Number">
                             <strong class="text-red sheet-music-number">@sheetMusic.Number</strong>
-                            <span class="sheet-music-title">@sheetMusic.Title                    </span>
+                            <span class="sheet-music-title" style="@(sheetMusic.IsHighlightedInIndex ? "font-style: italic;" : null)">
+                                @sheetMusic.Title
+                            </span>
                         </a>
                     </li>
                 }

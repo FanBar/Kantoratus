@@ -26,5 +26,6 @@ namespace Kantoratus.Persistence.Entities
 
         public string OriginalTitle { get; set; }
 
+        public bool IsHighlightedInIndex { get; set; }
     }
 }
