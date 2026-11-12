@@ -12,8 +12,15 @@ namespace Kantoratus.Domain
         public List<Initial> Composers { get; set; }
         public List<Initial> Members { get; set; }
         public List<Event> Events { get; set; }
+        public List<SheetMusic> SheetMusics { get; set; }
 
-        public bool NoResult => 
-            !string.IsNullOrEmpty(Query) && !PlayLists.Any() && !Pieces.Any() && !Composers.Any() && !Members.Any() && !Events.Any();
+        public bool NoResult =>
+            !string.IsNullOrEmpty(Query)
+            && !PlayLists.Any()
+            && !Pieces.Any()
+            && !Composers.Any()
+            && !Members.Any()
+            && !Events.Any()
+            && !SheetMusics.Any();
     }
 }

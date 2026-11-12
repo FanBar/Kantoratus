@@ -21,7 +21,8 @@ namespace Kantoratus.WebApp.Controllers
                     Pieces = Persistence.GetPieces(query),
                     Composers = Persistence.GetComposers(query),
                     Members = Persistence.GetMembers(query),
-                    Events = Persistence.GetEvents(query, null)
+                    Events = Persistence.GetEvents(query, null),
+                    SheetMusics = Persistence.GetSheetMusicList(query)
                 });
         }
     }

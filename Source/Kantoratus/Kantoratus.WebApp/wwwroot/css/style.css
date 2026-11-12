@@ -1239,10 +1239,6 @@ Artest Page
     background: #fff;
 }
 
-    .songs-details-section a:hover {
-        color: #AE1917;
-    }
-
 .song-details-box {
     margin-bottom: 30px;
     overflow: hidden;
@@ -2096,6 +2092,9 @@ a:hover, h1:hover {
     white-space: nowrap;
 }
 
+.sheet-music-item a:hover {
+    color: #AE1917;
+}
 
 @media only screen and (max-width: 767px) {
     .songs-details-section {

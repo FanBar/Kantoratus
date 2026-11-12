@@ -11,7 +11,7 @@ namespace Kantoratus.WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View(Persistence.GetChapters());
+            return View(Persistence.GetSheetMusicList());
         }
 
         [HttpGet("SheetMusic/{number}")]

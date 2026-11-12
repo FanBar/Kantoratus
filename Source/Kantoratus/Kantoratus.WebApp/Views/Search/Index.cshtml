@@ -61,3 +61,15 @@
         </div>
     </section>
 }
+
+@if (Model?.SheetMusics?.Count() > 0)
+{
+    <div class="search-header">
+        <h2>Doktori</h2>
+    </div>
+    <section class="blog-section spad">
+        <div class="container">
+            <partial name="~/Views/SheetMusic/SheetMusicListPartial.cshtml" model="@Model?.SheetMusics" />
+        </div>
+    </section>
+}

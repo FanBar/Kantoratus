@@ -239,7 +239,7 @@ namespace Kantoratus.Persistence
             return new SheetMusic
             {
                 Number = entity.Number,
-                Title = entity.Title ?? entity.OriginalTitle,
+                Title = GetTitle(entity),
                 Chapter = entity.SubChapter.Chapter.Name,
                 SubChapter = entity.SubChapter.Name,
                 Images = GetImages($@"SheetMusic\{entity.Number}"),
@@ -252,26 +252,54 @@ namespace Kantoratus.Persistence
             };
         }
 
-        public IEnumerable<Chapter> GetChapters()
+        public List<Chapter> GetSheetMusicList()
         {
-            return _context.Chapters.Select(c => new Chapter
-            {
-
-                Name = c.Name,
-                SubChapters = c.SubChapters.Select(sc => new SubChapter
+            return _context.Chapters
+                .Include(c => c.SubChapters)
+                .ThenInclude(sc => sc.SheetMusics)
+                .Select(c => new Chapter
                 {
-                    Name = sc.Name,
-                    SheetMusics = sc.SheetMusics.Select(sm => new SheetMusic
-                    {
-                        Number = sm.Number,
-                        Title = sm.Title ?? sm.OriginalTitle,
-                        OriginalTitle = sm.OriginalTitle == null || sm.OriginalTitle == ""
-                            ? sm.Title
-                            : sm.Title == null ? sm.OriginalTitle : sm.OriginalTitle + " / " + sm.Title,
-                        IsHighlightedInIndex = sm.IsHighlightedInIndex
-                    })
+
+                    Name = c.Name,
+                    SubChapters = c.SubChapters
+                        .Select(sc => new SubChapter
+                        {
+                            Name = sc.Name,
+                            SheetMusics = sc.SheetMusics
+                                .Select(sm => new SheetMusic
+                                {
+                                    Number = sm.Number,
+                                    Title = GetTitle(sm),
+                                    OriginalTitle = sm.OriginalTitle == null || sm.OriginalTitle == ""
+                                        ? sm.Title
+                                        : sm.Title == null ? sm.OriginalTitle : sm.OriginalTitle + " / " + sm.Title,
+                                    IsHighlightedInIndex = sm.IsHighlightedInIndex
+                                })
+                        })
+                        .Where(sc => sc.SheetMusics.Any())
                 })
-            });
+                .Where(c => c.SubChapters.Any())
+                .ToList();
+        }
+
+        public List<SheetMusic> GetSheetMusicList(string query)
+        {
+            var dbSheetMusic = string.IsNullOrEmpty(query)
+                ? _context.SheetMusics
+                : _context.SheetMusics.Where(sm =>
+                    sm.Lyrics.Contains(query)
+                    || sm.HimnologicalData1.Contains(query)
+                    || sm.HimnologicalData2.Contains(query));
+
+            return dbSheetMusic
+                .Select(sm => new SheetMusic
+                {
+                    Number = sm.Number,
+                    Title = GetTitle(sm),
+                    IsHighlightedInIndex = sm.IsHighlightedInIndex
+                })
+                .ToList();
+
         }
 
         private static (int NumberPart, string Suffix) ParseSheetMusicNumber(string value)
@@ -290,6 +318,11 @@ namespace Kantoratus.Persistence
             string suffix = i < value.Length ? value[i..] : string.Empty;
 
             return (numberPart, suffix);
+        }
+
+        private static string GetTitle(Entities.SheetMusic sheetMusic)
+        {
+            return sheetMusic.Title ?? sheetMusic.OriginalTitle;
         }
 
         public void Dispose()

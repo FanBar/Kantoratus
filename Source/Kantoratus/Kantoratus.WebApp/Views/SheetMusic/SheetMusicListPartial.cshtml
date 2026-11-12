@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Kantoratus.Domain.SheetMusic>
+
+<ul class="sheet-music-list">
+    @foreach (var sheetMusic in Model)
+    {
+        <li class="sheet-music-item">
+            <a asp-action="Details" asp-controller="SheetMusic" asp-route-number="@sheetMusic.Number">
+                <strong class="text-red sheet-music-number">@sheetMusic.Number</strong>
+                <span class="sheet-music-title" style="@(sheetMusic.IsHighlightedInIndex ? "font-style: italic;" : null)">
+                    @sheetMusic.Title
+                </span>
+            </a>
+        </li>
+    }
+</ul>
